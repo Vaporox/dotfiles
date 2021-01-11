@@ -1,5 +1,6 @@
 export PATH="$HOME/bin:$PATH"
 export PS1='\[\e[36m\]\w \[\e[0m\]$ '
+export WINHOME=$(wslpath $(wslvar USERPROFILE))
 
 # apt aliases
 alias up='sudo apt update && sudo apt upgrade -y'
@@ -13,14 +14,14 @@ alias ls='ls --color --group-directories-first'
 bionic() {
 	clear
 	echo -e '\e[32m--- BIONIC ---\e[0m'
-	cd ~/GitHub/bionic
+	cd $WINHOME/GitHub/bionic
 	npm start
 }
 
 # clone github repositories
 clone() {
 	if [[ $1 ]]; then
-		cd ~/GitHub
+		cd $WINHOME/GitHub
 		git clone https://github.com/$1
 		cd $(basename $1)
 	else
@@ -40,9 +41,9 @@ mkcd() {
 
 # restart bash
 restart() {
-	cd
+	cd $WINHOME
 	clear
-	exec bash
+	exec wsl.exe
 }
 
 # remove current directory
