@@ -1,6 +1,6 @@
 export PATH="$HOME/bin:$PATH"
 export PS1='\[\e[36m\]\w \[\e[0m\]$ '
-export WINHOME=$(wslpath $(wslvar USERPROFILE))
+export WINHOME='/mnt/c/Users/Jan'
 
 # apt aliases
 alias up='sudo apt update && sudo apt upgrade -y'
@@ -43,7 +43,7 @@ mkcd() {
 restart() {
 	cd $WINHOME
 	clear
-	exec wsl.exe
+	exec bash
 }
 
 # remove current directory
